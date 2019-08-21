@@ -1,2 +1,2 @@
-# gtm-cs-template
-Contentsquare Main Tag Template for Google Tag Manager
+# Contentsquare Main Tag Template for GTM
+Deploy the Contentsquare Main Tag and start collecting data!
