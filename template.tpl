@@ -302,71 +302,52 @@ ___WEB_PERMISSIONS___
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 const copyFromWindow = require ('copyFromWindow');
-const setInWindow = require('setInWindow');
 const injectScript = require('injectScript');
 const getUrl = require('getUrl');
 const getQueryParameters = require('getQueryParameters');
+const encodeUriComponent = require('encodeUriComponent');
+const createQueue = require ('createQueue');
 
-let _uxa = copyFromWindow('_uxa');
+let _uxaPush = createQueue('_uxa');
 let CS_CONF = copyFromWindow('CS_CONF');
 let windowPath = getUrl('path');
 let windowHash = getUrl('fragment');
 
-let scriptURL = 'https://t.contentsquare.net/uxa/'+data.TagId+'.js';
+let scriptURL = 'https://t.contentsquare.net/uxa/'+encodeUriComponent(data.TagId)+'.js';
 
-if (_uxa === undefined) _uxa = [];
 let utm_medium = getQueryParameters('utm_medium');
 let utm_source = getQueryParameters('utm_source');
 let utm_campaign = getQueryParameters('utm_campaign');
 let gclid = getQueryParameters('gclid');
 
 if (utm_medium !== '' && typeof utm_medium !== 'undefined' ){
-   _uxa.push([
-     "trackDynamicVariable", {
-     	key: 'Medium', 
-     	value: utm_medium.toLowerCase()
-     	}]);
+   _uxaPush(["trackDynamicVariable", {key: 'Medium', value: utm_medium.toLowerCase()}]);
   }
 if (utm_source !== '' && typeof utm_source !== 'undefined'){
-   _uxa.push([
-     "trackDynamicVariable", {
-     	key: 'Source', 
-     	value: utm_source.toLowerCase()
-     	}]);
+  _uxaPush(["trackDynamicVariable", {key: 'Source', value: utm_source.toLowerCase()}]);
   }
 if (utm_campaign !== '' && typeof utm_campaign !== 'undefined'){
-   _uxa.push([
-     "trackDynamicVariable", {
-     	key: 'Campaign', 
-     	value: utm_campaign.toLowerCase()
-     	}]);
+  _uxaPush(["trackDynamicVariable", {key: 'Campaign', value: utm_campaign.toLowerCase()}]);
   }
 if (gclid !== '' && typeof gclid !== 'undefined'){
-   _uxa.push([
-     "trackDynamicVariable", {
-     	key: 'Gclid', 
-     	value: 'true'
-     	}]);
+  _uxaPush(["trackDynamicVariable", {key: 'Gclid', value: 'true'}]);
   }
 if (data.hasOwnProperty('cvars')){
-    for (var i = 0; i < data.cvars.length; i++) {
-		_uxa.push(['setCustomVariable', data.cvars[i].slot, data.cvars[i].name, data.cvars[i].value,3]);
-	}
+  for (var i = 0; i < data.cvars.length; i++) {
+    _uxaPush(['setCustomVariable', data.cvars[i].slot, data.cvars[i].name, data.cvars[i].value,3]);
+    }
 }
 
 
 if (typeof CS_CONF === 'undefined') {
-	_uxa.push(['setPath', windowPath+windowHash.replace('#','?__')]);
-	setInWindow('_uxa', _uxa, true);
-	injectScript(scriptURL);
+	_uxaPush(['setPath', windowPath+windowHash.replace('#','?__')]);
+	injectScript(scriptURL, data.gtmOnSuccess, data.gtmOnFailure);
+  
 }
 
 else {
-	_uxa.push(['trackPageview', windowPath+windowHash.replace('#','?__')]);
-	setInWindow('_uxa', _uxa, true);
+	_uxaPush(['trackPageview', windowPath+windowHash.replace('#','?__')]);
 }
-
-data.gtmOnSuccess();
 
 
 ___NOTES___
