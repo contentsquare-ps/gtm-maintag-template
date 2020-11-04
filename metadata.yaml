@@ -1,7 +1,7 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
-  - sha: 049db844f47f3306d3170cc53683bc3588e33d15
+  - sha: 7fdf2818c5dacce512c3b00737e2809d6548040c
     changeNotes: Fixed hash collection
   - sha: 80b2f841d12a4019a426f0c0e3d0901e1d25d31f
     changeNotes: Added support for GUIDs in the Tag ID field
