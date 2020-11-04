@@ -109,19 +109,19 @@ const getUrl = require('getUrl');
 const getQueryParameters = require('getQueryParameters');
 const encodeUriComponent = require('encodeUriComponent');
 const createQueue = require ('createQueue');
-
+​
 let _uxaPush = createQueue('_uxa');
 let CS_CONF = copyFromWindow('CS_CONF');
 let windowPath = getUrl('path');
 let windowHash = getUrl('fragment');
-
+​
 let scriptURL = 'https://t.contentsquare.net/uxa/'+encodeUriComponent(data.TagId)+'.js';
-
+​
 let utm_medium = getQueryParameters('utm_medium');
 let utm_source = getQueryParameters('utm_source');
 let utm_campaign = getQueryParameters('utm_campaign');
 let gclid = getQueryParameters('gclid');
-
+​
 if (utm_medium !== '' && typeof utm_medium !== 'undefined' ){
    _uxaPush(["trackDynamicVariable", {key: 'Medium', value: utm_medium.toLowerCase()}]);
   }
@@ -139,16 +139,22 @@ if (data.hasOwnProperty('cvars')){
     _uxaPush(['setCustomVariable', data.cvars[i].slot, data.cvars[i].name, data.cvars[i].value,3]);
     }
 }
-
-
+​
 if (typeof CS_CONF === 'undefined') {
-	_uxaPush(['setPath', windowPath+windowHash.replace('#','?__')]);
+  if (windowHash !== '') {
+  _uxaPush(['setPath', windowPath+'?__'+windowHash]);
+  }
 	injectScript(scriptURL, data.gtmOnSuccess, data.gtmOnFailure);
   
 }
-
+​
 else {
-	_uxaPush(['trackPageview', windowPath+windowHash.replace('#','?__')]);
+  if (windowHash !== '') {
+  	_uxaPush(['trackPageview', windowPath+'?__'+windowHash]);
+  }
+  else {
+    _uxaPush(['trackPageview', windowPath]);
+  }
 }
 
 
