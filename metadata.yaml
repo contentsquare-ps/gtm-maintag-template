@@ -5,6 +5,5 @@ versions:
     changeNotes: Fixed hash collection
   - sha: 80b2f841d12a4019a426f0c0e3d0901e1d25d31f
     changeNotes: Added support for GUIDs in the Tag ID field
-    
   - sha: 9e7fde3f9c944ec6d9825cb0bf15f36a175d1870
     changeNotes: First Version
