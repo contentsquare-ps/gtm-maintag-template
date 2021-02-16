@@ -1,6 +1,8 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
+  - sha: 231026e7d1ccdd722932d3ff69564e40c106d4b1
+    changeNotes: Fixed disappeared custom variables dropdown
   - sha: 7fdf2818c5dacce512c3b00737e2809d6548040c
     changeNotes: Fixed hash collection
   - sha: 80b2f841d12a4019a426f0c0e3d0901e1d25d31f
