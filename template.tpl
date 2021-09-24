@@ -1,12 +1,4 @@
-﻿___TERMS_OF_SERVICE___
-
-By creating or modifying this file you agree to Google Tag Manager's Community
-Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as
-Google may provide), as modified from time to time.
-
-
-___INFO___
+﻿___INFO___
 
 {
   "displayName": "Contentsquare - Main tag",
@@ -88,6 +80,30 @@ ___TEMPLATE_PARAMETERS___
     ],
     "type": "SIMPLE_TABLE",
     "newRowButtonText": "Add custom variable"
+  },
+  {
+    "type": "GROUP",
+    "name": "advanced",
+    "displayName": "Advanced configuration (optional)",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "LABEL",
+        "name": "label1",
+        "displayName": "Contentsquare\u0027s natural pageviews collect the current page\u0027s URL by default when running on a page. You can change this behaviour by defining a different path to be sent here. Please note that this option will alter the URL of the data collected. If mistakes are made, the data collected might not be usable."
+      },
+      {
+        "type": "LABEL",
+        "name": "label2",
+        "displayName": "The domain and query will be collected automatically.\nFurthermore, hashes (#) are automatically converted to ?__"
+      },
+      {
+        "type": "TEXT",
+        "name": "setPathOverride",
+        "displayName": "Override default path (setPath)",
+        "simpleValueType": true
+      }
+    ]
   }
 ]
 
@@ -100,7 +116,7 @@ const getUrl = require('getUrl');
 const getQueryParameters = require('getQueryParameters');
 const encodeUriComponent = require('encodeUriComponent');
 const createQueue = require ('createQueue');
-
+                             
 let _uxaPush = createQueue('_uxa');
 let CS_CONF = copyFromWindow('CS_CONF');
 let windowPath = getUrl('path');
@@ -133,9 +149,17 @@ if (data.hasOwnProperty('cvars')){
 
 if (typeof CS_CONF === 'undefined') {
   if (windowHash !== '') {
-  _uxaPush(['setPath', windowPath+'?__'+windowHash]);
+     if (data.setPathOverride !== '' && typeof data.setPathOverride !== 'undefined' ){  
+       _uxaPush(['setPath', data.setPathOverride+'?__'+windowHash]);
+     }
+     else{
+     _uxaPush(['setPath', windowPath+'?__'+windowHash]);
+     }
   }
-	injectScript(scriptURL, data.gtmOnSuccess, data.gtmOnFailure);
+  else if (data.setPathOverride !== '' && typeof data.setPathOverride !== 'undefined') {
+     _uxaPush(['setPath', data.setPathOverride]);
+  }
+  injectScript(scriptURL, data.gtmOnSuccess, data.gtmOnFailure);
   
 }
 
