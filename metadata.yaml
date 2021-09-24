@@ -1,6 +1,8 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
+  - sha: 7fefc533035da5d30e39632c5a13ad1279898a2d
+    changeNotes: Added setPath functionality
   - sha: 231026e7d1ccdd722932d3ff69564e40c106d4b1
     changeNotes: Fixed disappeared custom variables dropdown
   - sha: 7fdf2818c5dacce512c3b00737e2809d6548040c
