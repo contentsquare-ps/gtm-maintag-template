@@ -1,13 +1,17 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
-  - sha: 7fefc533035da5d30e39632c5a13ad1279898a2d
-    changeNotes: Added setPath functionality
-  - sha: 231026e7d1ccdd722932d3ff69564e40c106d4b1
-    changeNotes: Fixed disappeared custom variables dropdown
-  - sha: 7fdf2818c5dacce512c3b00737e2809d6548040c
-    changeNotes: Fixed hash collection
-  - sha: 80b2f841d12a4019a426f0c0e3d0901e1d25d31f
-    changeNotes: Added support for GUIDs in the Tag ID field
-  - sha: 9e7fde3f9c944ec6d9825cb0bf15f36a175d1870
-    changeNotes: First Version
+    # Latest version
+    - sha: 6f19e1653502a5b32b1a3e461c8c13c999932217
+       changeNotes: Added PII masking feature.
+    # Older versions
+    - sha: 7fefc533035da5d30e39632c5a13ad1279898a2d
+      changeNotes: Added setPath functionality
+    - sha: 231026e7d1ccdd722932d3ff69564e40c106d4b1
+      changeNotes: Fixed disappeared custom variables dropdown
+    - sha: 7fdf2818c5dacce512c3b00737e2809d6548040c
+      changeNotes: Fixed hash collection
+    - sha: 80b2f841d12a4019a426f0c0e3d0901e1d25d31f
+      changeNotes: Added support for GUIDs in the Tag ID field
+    - sha: 9e7fde3f9c944ec6d9825cb0bf15f36a175d1870
+      changeNotes: First Version
