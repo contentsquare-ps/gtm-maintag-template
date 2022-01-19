@@ -1,7 +1,7 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
-  - sha: 144ec8ef2118057c9ed7e460967900e4b6012954
+  - sha: b31dddfcfab62fafbee1c87b53f2a2a0a3fd563a
     changeNotes: Added missing data.gtmOnSuccess callback to the else condition for SPA scenarios. Without it the "Still Running" issue occurs in the GTM debugger.
   - sha: fa5a9a003cc38020df7fbb73060abaa36a7ded05
     changeNotes: Added PII masking feature.
