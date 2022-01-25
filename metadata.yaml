@@ -1,6 +1,8 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
+  - sha: da3d43823a5dfefc72b59ff44092ca2ffc3aec97
+    changeNotes: Updated Brand Name
   - sha: b31dddfcfab62fafbee1c87b53f2a2a0a3fd563a
     changeNotes: Added missing data.gtmOnSuccess callback to the else condition for SPA scenarios. Without it the "Still Running" issue occurs in the GTM debugger.
   - sha: fa5a9a003cc38020df7fbb73060abaa36a7ded05
