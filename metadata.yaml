@@ -1,6 +1,8 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
+  - sha: 5f61ffa627c3f57803f23d9170d73203778ea8f3
+    changeNotes: Added Scope setting for Custom Variables
   - sha: 754159f19d0af820916377e5093d4e88a46608b5
     changeNotes: Updated Brand Name
   - sha: b31dddfcfab62fafbee1c87b53f2a2a0a3fd563a
