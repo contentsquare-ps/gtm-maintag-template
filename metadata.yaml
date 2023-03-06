@@ -1,6 +1,8 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
+  - sha: ff9aed514a642481aebfe555f850fa8567357a23
+    changeNotes: Added support for more custom variable scenarios
   - sha: 46ef49eb4a6dae8edd2ae9eaeab307e1e500cd50
     changeNotes: Re-added setQuery
   - sha: 8818c2bf948b97725bef655059ac41b0941b95ba
