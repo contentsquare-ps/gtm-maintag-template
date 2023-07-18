@@ -36,153 +36,160 @@ ___TEMPLATE_PARAMETERS___
 [
   {
     "help": "This is your unique Contentsquare ID",
+    "displayName": "Tag ID",
+    "simpleValueType": true,
+    "name": "TagId",
+    "type": "TEXT",
+    "canBeEmptyString": false,
     "valueValidators": [
       {
         "type": "NON_EMPTY"
       }
-    ],
-    "displayName": "Tag ID",
-    "simpleValueType": true,
-    "name": "TagId",
-    "type": "TEXT"
+    ]
   },
   {
+    "type": "GROUP",
+    "name": "customVariablesGroup",
     "displayName": "Contentsquare Custom Variables",
-    "name": "Label",
-    "type": "LABEL"
-  },
-  {
-    "displayName": "Define Custom Variables",
-    "name": "cvars",
-    "simpleTableColumns": [
+    "groupStyle": "ZIPPY_OPEN_ON_PARAM",
+    "subParams": [
       {
-        "valueValidators": [
+        "type": "SIMPLE_TABLE",
+        "name": "cvars",
+        "displayName": "Define custom variables",
+        "simpleTableColumns": [
           {
-            "args": [
-              "([1-9]|[1-9][0-9])"
+            "defaultValue": "",
+            "displayName": "Slot",
+            "name": "slot",
+            "type": "TEXT",
+            "isUnique": true,
+            "valueHint": "Integer 1-20",
+            "valueValidators": [
+              {
+                "type": "REGEX",
+                "args": [
+                  "([1-9]|[1-9][0-9])"
+                ]
+              }
+            ]
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Name",
+            "name": "name",
+            "type": "TEXT",
+            "isUnique": true
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Value",
+            "name": "value",
+            "type": "SELECT",
+            "macrosInSelect": true
+          },
+          {
+            "defaultValue": 3,
+            "displayName": "Scope",
+            "name": "scope",
+            "type": "SELECT",
+            "selectItems": [
+              {
+                "value": 3,
+                "displayValue": "Page (3)"
+              },
+              {
+                "value": 2,
+                "displayValue": "Visit (2)"
+              },
+              {
+                "value": 0,
+                "displayValue": "Page \u0026 Visit (2 \u0026 3)"
+              },
+              {
+                "value": "4n",
+                "displayValue": "Next Pageview - Natural (4)"
+              },
+              {
+                "value": 4,
+                "displayValue": "Next Pageview - Artificial (4)"
+              },
+              {
+                "value": "4an",
+                "displayValue": "Next Pageview - Natural \u0026 Artificial (4)"
+              }
             ],
-            "type": "REGEX"
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ]
           }
         ],
-        "defaultValue": "",
-        "displayName": "Slot",
-        "name": "slot",
-        "isUnique": true,
-        "type": "TEXT",
-        "valueHint": "Integer 1-20"
-      },
-      {
-        "defaultValue": "",
-        "displayName": "Name",
-        "name": "name",
-        "type": "TEXT",
-        "isUnique": true
-      },
-      {
-        "macrosInSelect": true,
-        "selectItems": [],
-        "defaultValue": "",
-        "displayName": "Value",
-        "name": "value",
-        "type": "SELECT"
-      },
-      {
-        "defaultValue": 3,
-        "displayName": "Scope",
-        "name": "scope",
-        "type": "SELECT",
-        "selectItems": [
-          {
-            "value": 3,
-            "displayValue": "Page (3)"
-          },
-          {
-            "value": 2,
-            "displayValue": "Visit (2)"
-          },
-          {
-            "value": 0,
-            "displayValue": "Page \u0026 Visit (2 \u0026 3)"
-          },
-          {
-            "value": 4,
-            "displayValue": "Next Artificial Pageview (4)"
-          },
-          {
-            "value": "4n",
-            "displayValue": "Next Natural Pageview (4)"
-          },
-          {
-            "value": "4an",
-            "displayValue": "Next Artificial \u0026 Natural Pageview (4)"
-          }
-        ],
-        "valueValidators": [
-          {
-            "type": "NON_EMPTY"
-          }
-        ]
+        "newRowButtonText": "Add Custom Variable",
+        "help": "By default most Custom Variables should be set to Page (3)",
+        "defaultValue": ""
       }
-    ],
-    "type": "SIMPLE_TABLE",
-    "newRowButtonText": "Add Custom Variable",
-    "help": "By default most Custom Variables should be set to Page (3)"
+    ]
   },
   {
+    "type": "GROUP",
+    "name": "maskPIIGroup",
     "displayName": "Mask Personally Identifiable Information (PII) in session replay",
-    "name": "Label2",
-    "type": "LABEL"
-  },
-  {
-    "displayName": "Mask using CSS Selectors for text nodes (optional)",
-    "name": "Label3",
-    "type": "LABEL"
-  },
-  {
-    "type": "TEXT",
-    "name": "piiselectors",
-    "displayName": "Define CSS Selectors",
-    "simpleValueType": true,
-    "canBeEmptyString": true,
-    "valueHint": "#username,.details,#firstname"
-  },
-  {
-    "displayName": "Mask using Attributes \u0026 Selectors for element data attributes (optional)",
-    "name": "Label4",
-    "type": "LABEL"
-  },
-  {
-    "type": "SIMPLE_TABLE",
-    "name": "attributeselectors",
-    "displayName": "Define CSS Attribute Selectors",
-    "simpleTableColumns": [
+    "groupStyle": "ZIPPY_OPEN_ON_PARAM",
+    "subParams": [
       {
-        "defaultValue": "",
-        "displayName": "CSS Selectors",
-        "name": "selectors",
-        "type": "TEXT",
-        "valueHint": "#submit-button,.formfield",
-        "isUnique": true,
-        "valueValidators": [
-          {
-            "type": "NON_EMPTY"
-          }
-        ]
+        "type": "LABEL",
+        "name": "cssSelectorsLabel",
+        "displayName": "Mask PII using CSS Selectors for text nodes (optional)"
       },
       {
-        "defaultValue": "",
-        "displayName": "Data Attributes",
-        "name": "attributes",
         "type": "TEXT",
-        "valueHint": "data-email,data-firstname",
-        "valueValidators": [
+        "name": "piiselectors",
+        "displayName": "Define CSS selectors",
+        "simpleValueType": true,
+        "canBeEmptyString": false,
+        "valueHint": "#username,.details,#firstname"
+      },
+      {
+        "type": "LABEL",
+        "name": "dataAttributesLabel",
+        "displayName": "Mask PII using Attributes \u0026 Selectors for element data attributes (optional)"
+      },
+      {
+        "type": "SIMPLE_TABLE",
+        "name": "attributeselectors",
+        "displayName": "Define CSS attribute selectors",
+        "simpleTableColumns": [
           {
-            "type": "NON_EMPTY"
+            "defaultValue": "",
+            "displayName": "Column 1",
+            "name": "selectors",
+            "type": "TEXT",
+            "isUnique": true,
+            "valueHint": "#submit-button,.formfield",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ]
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Data Attributes",
+            "name": "attributes",
+            "type": "TEXT",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ],
+            "valueHint": "data-email,data-firstname"
           }
-        ]
+        ],
+        "newRowButtonText": "Add New Attribute Selector"
       }
-    ],
-    "newRowButtonText": "Add New Attribute Selector"
+    ]
   }
 ]
 
@@ -195,176 +202,167 @@ const injectScript = require("injectScript");
 const getUrl = require("getUrl");
 const parseUrl = require("parseUrl");
 const urlObject = parseUrl(getUrl());
-const search = urlObject.search;
 const pathname = urlObject.pathname;
 const hash = urlObject.hash;
 const getQueryParameters = require("getQueryParameters");
 const createQueue = require("createQueue");
 
 let _uxaPush = createQueue("_uxa");
-let CS_CONF = copyFromWindow("CS_CONF");
+const CS_CONF = copyFromWindow("CS_CONF");
 
-let utm_medium = getQueryParameters("utm_medium");
-let utm_source = getQueryParameters("utm_source");
-let utm_campaign = getQueryParameters("utm_campaign");
-let gclid = getQueryParameters("gclid");
+const utm_medium = getQueryParameters("utm_medium");
+const utm_source = getQueryParameters("utm_source");
+const utm_campaign = getQueryParameters("utm_campaign");
+const gclid = getQueryParameters("gclid");
 
 if (utm_medium !== "" && typeof utm_medium !== "undefined") {
-  _uxaPush([
-    "trackDynamicVariable",
-    {
-      key: "Medium",
-      value: utm_medium.toLowerCase(),
-    },
-  ]);
+    _uxaPush([
+        "trackDynamicVariable",
+        {
+            key: "Medium",
+            value: utm_medium.toLowerCase(),
+        },
+    ]);
 }
 
 if (utm_source !== "" && typeof utm_source !== "undefined") {
-  _uxaPush([
-    "trackDynamicVariable",
-    {
-      key: "Source",
-      value: utm_source.toLowerCase(),
-    },
-  ]);
+    _uxaPush([
+        "trackDynamicVariable",
+        {
+            key: "Source",
+            value: utm_source.toLowerCase(),
+        },
+    ]);
 }
 
 if (utm_campaign !== "" && typeof utm_campaign !== "undefined") {
-  _uxaPush([
-    "trackDynamicVariable",
-    {
-      key: "Campaign",
-      value: utm_campaign.toLowerCase(),
-    },
-  ]);
+    _uxaPush([
+        "trackDynamicVariable",
+        {
+            key: "Campaign",
+            value: utm_campaign.toLowerCase(),
+        },
+    ]);
 }
 
 if (gclid !== "" && typeof gclid !== "undefined") {
-  _uxaPush([
-    "trackDynamicVariable",
-    {
-      key: "Gclid",
-      value: "true",
-    },
-  ]);
+    _uxaPush([
+        "trackDynamicVariable",
+        {
+            key: "Gclid",
+            value: "true",
+        },
+    ]);
 }
 
-var cvarScope4ArtificialPVarray = [];
+let cvarScope4ArtificialPVarray = [];
 
 if (data.hasOwnProperty("cvars")) {
-  for (var i = 0; i < data.cvars.length; i++) {
-    var slot = data.cvars[i].slot;
-    var key = data.cvars[i].name;
-    var value = data.cvars[i].value;
-    var getScope = data.cvars[i].scope;
-    let scope;
+    for (var i = 0; i < data.cvars.length; i++) {
+        const slot = data.cvars[i].slot;
+        const key = data.cvars[i].name;
+        const value = data.cvars[i].value;
+        const getScope = data.cvars[i].scope;
+        let scope;
 
-    //This is for backward compatability to support older tag versions which did not have any scope defined so as to not break.
-    //Scope 3 used to be hardcoded so this will keep that logic the same after upgrade.
-    if (typeof getScope === "undefined" || getScope === "") {
-      scope = 3;
-    }
-
-    if (getScope != 4) {
-      if (getScope === "4n" || getScope === "4an") {
-        scope = 4;
-      } else {
-        scope = getScope;
-      }
-
-      if (
-        key != "" &&
-        typeof key != "undefined" &&
-        value != "" &&
-        typeof value != "undefined"
-      ) {
-        if (getScope === "0") {
-          _uxaPush(["setCustomVariable", slot, key, value]);
-        } else {
-          _uxaPush(["setCustomVariable", slot, key, value, scope]);
+        //This is for backward compatability to support older tag versions which did not have any scope defined so as to not break.
+        //Scope 3 used to be hardcoded so this will keep that logic the same after upgrade.
+        if (typeof getScope === "undefined" || getScope === "") {
+            scope = 3;
         }
-      }
-    }
 
-    if (getScope === 4 || getScope === "4an") {
-      scope = 4;
+        if (getScope != 4) {
+            if (getScope === "4n" || getScope === "4an") {
+                scope = 4;
+            } else {
+                scope = getScope;
+            }
 
-      cvarScope4ArtificialPVarray.push({
-        slot: slot,
-        key: key,
-        value: value,
-        scope: scope,
-      });
+            if (key != "" && typeof key != "undefined" && value != "" && typeof value != "undefined") {
+                if (getScope === "0") {
+                    _uxaPush(["setCustomVariable", slot, key, value]);
+                } else {
+                    _uxaPush(["setCustomVariable", slot, key, value, scope]);
+                }
+            }
+        }
+
+        if (getScope === 4 || getScope === "4an") {
+            scope = 4;
+
+            cvarScope4ArtificialPVarray.push({
+                slot: slot,
+                key: key,
+                value: value,
+                scope: scope,
+            });
+        }
     }
-  }
 }
 
-var usePIIapi = false;
-var piiObject = {};
+let usePIIapi = false;
+let piiObject = {};
 
 if (data.piiselectors) {
-  piiObject.PIISelectors = [data.piiselectors];
-  if (piiObject.PIISelectors) {
-    usePIIapi = true;
-  }
+    piiObject.PIISelectors = [data.piiselectors];
+    if (piiObject.PIISelectors) {
+        usePIIapi = true;
+    }
 }
 
 if (data.attributeselectors) {
-  piiObject.Attributes = [];
-  for (var i = 0; i < data.attributeselectors.length; i++) {
-    piiObject.Attributes.push({
-      selector: data.attributeselectors[i].selectors,
-      attrName: data.attributeselectors[i].attributes,
-    });
-  }
+    piiObject.Attributes = [];
+    for (var i = 0; i < data.attributeselectors.length; i++) {
+        piiObject.Attributes.push({
+            selector: data.attributeselectors[i].selectors,
+            attrName: data.attributeselectors[i].attributes,
+        });
+    }
 
-  if (piiObject.Attributes.length) {
-    usePIIapi = true;
-  }
+    if (piiObject.Attributes.length) {
+        usePIIapi = true;
+    }
 }
 
 if (usePIIapi) {
-  _uxaPush(["setPIISelectors", piiObject]);
+    _uxaPush(["setPIISelectors", piiObject]);
 }
 
-function onSuccess() {
-  let _uxaPush = createQueue("_uxa");
+let afterPageViewTriggered = false;
+function csCallback() {
+    if (!afterPageViewTriggered) {
+        afterPageViewTriggered = true;
 
-  for (var i = 0; i < cvarScope4ArtificialPVarray.length; i++) {
-    var slot = cvarScope4ArtificialPVarray[i].slot;
-    var key = cvarScope4ArtificialPVarray[i].key;
-    var value = cvarScope4ArtificialPVarray[i].value;
-    var scope = cvarScope4ArtificialPVarray[i].scope;
+        let _uxaPush = createQueue("_uxa");
 
-    if (
-      key != "" &&
-      typeof key != "undefined" &&
-      value != "" &&
-      typeof value != "undefined"
-    ) {
-      _uxaPush(["setCustomVariable", slot, key, value, scope]);
+        for (var i = 0; i < cvarScope4ArtificialPVarray.length; i++) {
+            const slot = cvarScope4ArtificialPVarray[i].slot;
+            const key = cvarScope4ArtificialPVarray[i].key;
+            const value = cvarScope4ArtificialPVarray[i].value;
+            const scope = cvarScope4ArtificialPVarray[i].scope;
+
+            if (key != "" && typeof key != "undefined" && value != "" && typeof value != "undefined") {
+                _uxaPush(["setCustomVariable", slot, key, value, scope]);
+            }
+        }
     }
-  }
+}
+_uxaPush(["afterPageView", csCallback]);
 
-  data.gtmOnSuccess();
+function onSuccess() {
+    data.gtmOnSuccess();
 }
 
 function onFailure() {
-  data.gtmOnFailure();
+    data.gtmOnFailure();
 }
 
-_uxaPush(["setQuery", search]);
-
-if (typeof CS_CONF === "undefined") {
-  _uxaPush(["setPath", pathname + hash.replace("#", "?__")]);
-  injectScript(
-    "https://t.contentsquare.net/uxa/" + data.TagId + ".js",
-    onSuccess,
-    onFailure
-  );
+if (data.TagId && typeof CS_CONF === "undefined") {
+    _uxaPush(["setPath", pathname + hash.replace("#", "?__")]);
+    injectScript("https://t.contentsquare.net/uxa/" + data.TagId + ".js", onSuccess, onFailure);
 } else {
-  _uxaPush(["trackPageview", pathname + hash.replace("#", "?__")]);
-  data.gtmOnSuccess();
+    _uxaPush(["trackPageview", pathname + hash.replace("#", "?__")]);
+    data.gtmOnSuccess();
 }
 
 
