@@ -1,6 +1,8 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
+  - sha: 3754247df356da8008dd091f6c49f256a7e550fa
+    changeNotes: Fixed bug with table (GTM bug)
   - sha: 4224b06ce65e71144a983fa3d0e7cf78be472e59
     changeNotes: Removed setQuery and made some UI improvements plus an improvement to scope 4 custom vars (artificial pageview)
   - sha: 3be15d0d884d6eae1973745e96f28eca856824cc
