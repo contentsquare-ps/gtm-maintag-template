@@ -271,7 +271,7 @@ if (data.hasOwnProperty("cvars")) {
         } else if (getScope === "4n" || getScope === "4an") {
             scope = 4;
         } else {
-            scope = getScope || 3;
+            scope = getScope;
         }
 
         if (key != "" && typeof key != "undefined" && value != "" && typeof value != "undefined") {
