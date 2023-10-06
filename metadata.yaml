@@ -1,7 +1,7 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
-  - sha: d061623a693d9bf4c06939f046bfc4650a8604f3
+  - sha: 0f02d09c2ca7642aed71675d04fc34c69ad4bc6f
     changeNotes: Refactored Scope 4 logic
   - sha: 3754247df356da8008dd091f6c49f256a7e550fa
     changeNotes: Fixed bug with table (GTM bug)
