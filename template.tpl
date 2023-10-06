@@ -275,7 +275,7 @@ if (data.hasOwnProperty("cvars")) {
         }
 
         if (key != "" && typeof key != "undefined" && value != "" && typeof value != "undefined") {
-            if (getScope === "0") {
+            if (getScope === 0) {
                 _uxaPush(["setCustomVariable", slot, key, value]);
             } else {
                 _uxaPush(["setCustomVariable", slot, key, value, scope]);
