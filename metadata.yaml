@@ -1,6 +1,8 @@
 homepage: "https://contentsquare.com/"
 documentation: "https://docs.contentsquare.com/uxa-en/"
 versions:
+  - sha: 98e163f914af7cd7420230fd054102ebd5767d40
+    changeNotes: Added support for WebView tag
   - sha: 907b2aeae6fee7d34f4a8e865b169c6768b4d33b
     changeNotes: Refactored Scope 4 logic
   - sha: 3754247df356da8008dd091f6c49f256a7e550fa
