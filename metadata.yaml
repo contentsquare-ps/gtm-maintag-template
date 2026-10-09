@@ -1,6 +1,8 @@
 homepage: "https://contentsquare.com/"
-documentation: "https://docs.contentsquare.com/uxa-en/"
+documentation: "https://docs.contentsquare.com/en/web/"
 versions:
+  - sha: 2972365c95e1ea0dc19f12ac7bb1eec406e8524a
+    changeNotes: Updated template thumbnail image
   - sha: 840a74951248c66cccc4eaa1e19c058d78716c2d
     changeNotes: Fixed bug in APV
   - sha: 98e163f914af7cd7420230fd054102ebd5767d40
